@@ -1,7 +1,13 @@
-" I don't rememb
+" vim basic setup
+set nocompatible              
+filetype off                  
+
+" Set statusbar preferences
 set laststatus=2
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set ruler
+
+" Turn on line Numbers
+set number
 
 " Set this so themes load properly, especially with tmux
 if $TERM == "xterm-256color"
@@ -66,9 +72,6 @@ filetype plugin indent on    " required
 
 " Go Autocomplete
 setlocal omnifunc=go#complete#Complete
-
-" Turn on line Numbers
-set number
 
 " Ignore case when searching
 :set ignorecase
