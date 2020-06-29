@@ -1,0 +1,12 @@
+- clean: ['~']
+
+- shell:
+  - [mkdir -p ~/.vim/after/ftplugin, Creating ftplugin dir]
+
+- link:
+    ~/.bash_profile: bash_profile
+    ~/.gitconfig: gitconfig
+    ~/.vimrc: vimrc
+    ~/.vim/after/ftplugin/javascript.vim: javascript.vim
+    ~/.gitignore_global: gitignore_global
+    ~/.tmux.conf: tmux

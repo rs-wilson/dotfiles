@@ -1,0 +1,9 @@
+[push]
+	default = simple
+[github]
+  user = rwilson
+[user]
+	name = Ryan Wilson
+	email = rentabuddha@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global
