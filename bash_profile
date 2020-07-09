@@ -5,11 +5,17 @@ export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$GOROOT/bin:$PATH"
 
-#useful for getting the size of dirs in the current dir
-alias ds="sudo du -hs * | sort -rh | head -10"
+# useful for getting the size of dirs in the current dir
+alias ds="sudo du -hs * | sort -rh"
 
-#make gopls not puke randomly
+# make gopls not puke randomly
 export GOPACKAGEDRIVER=off
+
+# bash color scheming
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(git::\1)/'
+}
+export PS1="\[\033[01;35m\]\u@\h\[\033[31m\]\$(parse_git_branch)\[\033[01;35m\]:\[\033[01;33m\]\w\n] \[\033[00m\]\[\e]0;\H:\w\a\]"
 
 alias ..="cd .."
 alias l="ls -aGl"
@@ -78,11 +84,11 @@ HISTFILESIZE=2000
 # Make vim our default editor
 export EDITOR=vim
 
-# be explicit about java
-export JAVA_HOME=$(/usr/libexec/java_home)
-
 # explicitly use gnu tools
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+# be explicit about java, if we have it
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # if we've got the ruby version manager, this is what it recommends
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
