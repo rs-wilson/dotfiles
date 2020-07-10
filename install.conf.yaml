@@ -11,3 +11,4 @@
     ~/.vim/after/ftplugin/javascript.vim: javascript.vim
     ~/.gitignore_global: gitignore_global
     ~/.tmux.conf: tmux
+    ~/.zshrc: zshrc
