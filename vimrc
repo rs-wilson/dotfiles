@@ -60,10 +60,14 @@ let g:rainbow_active = 1
 
 " Status bar blame
 Plugin 'zivyangll/git-blame.vim'
-nnoremap <leader>s :<C-u>call gitblame#echo()<CR>
+nnoremap <leader>b :<C-u>call gitblame#echo()<CR>
 
 " Have vim put in closing brace automatically
 Plugin 'jiangmiao/auto-pairs'
+
+" Clang-format stuff like protofiles
+Plugin 'rhysd/vim-clang-format'
+" example :ClangFormat
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

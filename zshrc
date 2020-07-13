@@ -117,6 +117,7 @@ alias gc="git commit"
 alias gp="git pull"
 alias gd="git diff"
 alias ft="ag"
+alias gl="golangci-lint run"
 
 # tmux aliases
 alias tmux="TERM=screen-256color-bce tmux"
