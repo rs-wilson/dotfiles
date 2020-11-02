@@ -116,8 +116,10 @@ alias gaa="git add -A && git status"
 alias gc="git commit"
 alias gp="git pull"
 alias gd="git diff"
+alias gds="git diff --staged"
 alias ft="ag"
-alias gl="golangci-lint run"
+alias dc="docker-compose"
+alias v="vim ."
 
 # tmux aliases
 alias tmux="TERM=screen-256color-bce tmux"
@@ -170,5 +172,4 @@ export GOPACKAGEDRIVER=off
 
 # Have default fzf include hidden files
 export FZF_DEFAULT_COMMAND='find .'
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

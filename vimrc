@@ -62,9 +62,6 @@ let g:rainbow_active = 1
 Plugin 'zivyangll/git-blame.vim'
 nnoremap <leader>b :<C-u>call gitblame#echo()<CR>
 
-" Have vim put in closing brace automatically
-Plugin 'jiangmiao/auto-pairs'
-
 " Clang-format stuff like protofiles
 Plugin 'rhysd/vim-clang-format'
 " example :ClangFormat
@@ -127,6 +124,8 @@ let g:jedi#documentation_command = "-"
 
 " Disable auto-doc showing in jedi
 autocmd FileType python setlocal completeopt-=preview
+" Just kidding lets just disable it completely for everything
+set completeopt-=preview
 
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
