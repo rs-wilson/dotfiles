@@ -40,4 +40,4 @@
 
 `mkdir .dotfiles && git clone git@github.com:rs-wilson/dotfiles.git .dotfiles && cd .dotfiles && ./install`
 
-`vim +'PluginInstall --sync' +qa`
+`vim +'PluginInstall' +qa`
