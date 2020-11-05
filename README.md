@@ -28,6 +28,8 @@
 
 `git clone https://github.com/powerline/fonts.git --depth=1 && cd fonts && ./install.sh && cd .. && rm -rf fonts`
 
+In iTerm2, go to preferences -> profiles -> text, and change the Font to **Fira Mono for Powerline** with font size 14 (or whatever is comfortable), and ligatures enabled.
+
 `git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" && ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"`
 
  # All

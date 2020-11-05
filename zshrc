@@ -70,7 +70,6 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git 
-  golang
   zsh-syntax-highlighting
   zsh-autosuggestions
 )
@@ -120,6 +119,7 @@ alias gds="git diff --staged"
 alias ft="ag"
 alias dc="docker-compose"
 alias v="vim ."
+alias gtr='cd $(git rev-parse --show-toplevel)'
 
 # tmux aliases
 alias tmux="TERM=screen-256color-bce tmux"
@@ -173,3 +173,8 @@ export GOPACKAGEDRIVER=off
 # Have default fzf include hidden files
 export FZF_DEFAULT_COMMAND='find .'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Load rbenv if we have it
+if ! [ -x "$(command -v rbenv)" ]; then
+  eval "$(rbenv init -)"
+fi
