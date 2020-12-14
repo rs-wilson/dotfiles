@@ -1,10 +1,18 @@
-# Unix + Bash:
+# Ubuntu + Bash:
 
 `sudo apt-get install git`
 
 `sudo apt-get install tmux`
 
 `sudo apt-get install silversearcher-ag`
+
+# CentOS + Bash:
+
+`sudo yum install git`
+
+`sudo yum install tmux`
+
+`sudo yum install the_silver_searcher`
 
 # Mac + ZSH:
 
