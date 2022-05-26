@@ -2,6 +2,9 @@
 set nocompatible              
 filetype off                  
 
+ "Reload files changed outside vim
+set autoread 
+
 " Set statusbar preferences
 set laststatus=2
 set ruler
@@ -9,9 +12,27 @@ set ruler
 " Turn on line Numbers
 set number
 
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+if has('persistent_undo')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
+  set undofile
+endif
+
 " Set this so themes load properly, especially with tmux
-if $TERM == "xterm-256color"
+if $TERM == "xterm-256color" || has("gui_running")
   set t_Co=256
+endif
+
+" Set vertical bar as cursor in insert mode
+if exists('$TMUX')
+  let &t_SI = "\<esc>Ptmux;\<esc>\<esc>]50;CursorShape=1\x7\<esc>\\"
+  let &t_EI = "\<esc>Ptmux;\<esc>\<esc>]50;CursorShape=0\x7\<esc>\\"
+else
+  let &t_SI = "\<esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<esc>]50;CursorShape=0\x7"
 endif
 
 " Our color theme with syntax highlighting turned on
@@ -42,9 +63,6 @@ Plugin 'airblade/vim-gitgutter'
 " Light Line
 Plugin 'itchyny/lightline.vim'
 
-" Jedi (Python)
-Plugin 'davidhalter/jedi-vim'
-
 " Markdown highlighting
 Bundle 'gabrielelana/vim-markdown'
 
@@ -53,6 +71,9 @@ Plugin 'mileszs/ack.vim'
 
 " Protobuf highlighting"
 Bundle 'uarun/vim-protobuf'
+
+" Linter manager
+Plugin 'dense-analysis/ale'
 
 " Highlight brackets with different colors
 Plugin 'luochen1990/rainbow'
@@ -78,14 +99,30 @@ setlocal omnifunc=go#complete#Complete
 :set ignorecase
 :set smartcase
 
-" NERDTree Toggle
-map <leader>n :NERDTreeToggle <Esc>
+" Make backspace work as normal
+set backspace=indent,eol,start
 
+" NERDTree settings
+map <leader>n :NERDTreeToggle <Esc>
+let NERDTreeQuitOnOpen = 0
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+" force nerdtree as a window so it keeps open when using vim .
+autocmd vimenter * NERDTree
+autocmd vimenter * wincmd p
+
+" close nerdtree if its the only thing open
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" disable allow preview popups
+set completeopt-=preview
+
+" Use Ag over Grep
 if executable('ag')
-  " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag to search in vim
-  let g:ackprg = 'ag --vimgrep'
+  let g:ackprg = 'ag --vimgrep' "Use ag to search in vim
 endif
 
 " Fuzzy Open File
@@ -122,11 +159,6 @@ let g:go_doc_keywordprg_enabled = 0
 " Disable K mapping from jedi
 let g:jedi#documentation_command = "-"
 
-" Disable auto-doc showing in jedi
-autocmd FileType python setlocal completeopt-=preview
-" Just kidding lets just disable it completely for everything
-set completeopt-=preview
-
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
@@ -158,6 +190,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
+au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
 
 " Explicitly use gopls
 let g:go_def_mode='gopls'
@@ -181,3 +214,9 @@ set softtabstop=2
 set tabstop=2
 set smartindent
 set smarttab
+
+" Ale linter settings
+nmap <silent> <c-9> <Plug>(ale_next_previous)
+nmap <silent> <c-0> <Plug>(ale_next_wrap)
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
