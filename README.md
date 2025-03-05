@@ -26,8 +26,6 @@
 
 `brew install zsh && chsh -s /usr/local/bin/zsh`
 
-`brew tap homebrew/cask-fonts && brew cask install font-fira-code`
-
 `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
 
 `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
@@ -44,7 +42,7 @@ In iTerm2, go to preferences -> profiles -> text, and change the Font to **Fira 
 
 `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
-`git clone git://github.com/ajh17/Spacegray.vim ~/.vim/pack/vendor/start/Spacegray`
+`git clone http://github.com/vim-scripts/Spacegray.vim ~/.vim/pack/vendor/start/Spacegray`
 
 `git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf` && `~/.fzf/install`
 
