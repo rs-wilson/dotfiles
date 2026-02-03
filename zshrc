@@ -175,6 +175,6 @@ export FZF_DEFAULT_COMMAND='find .'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load rbenv if we have it
-if ! [ -x "$(command -v rbenv)" ]; then
+if [ -x "$(command -v rbenv)" ]; then
   eval "$(rbenv init -)"
 fi
