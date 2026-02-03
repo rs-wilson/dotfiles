@@ -24,7 +24,9 @@
 
 `brew install the_silver_searcher`
 
-`brew install zsh && chsh -s /usr/local/bin/zsh`
+`brew install maccy`
+
+`brew install zsh && chsh -s /usr/local/bin/zsh` -- Note: not necessary these days as iterm2 comes with zsh
 
 `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
 
